@@ -1,6 +1,6 @@
 # site properties and page defaults
-title: stefanolafsson
-subtitle: 
+title: HUMI Lab
+subtitle: Human-Centered Machine Intelligence
 description: An engaging 1-3 sentence description of your lab.
 header: images/background.jpg
 footer: images/background.jpg
@@ -8,12 +8,11 @@ proofer: false
 
 # site social media and other links
 links:
-  email: contact@stefanolafsson.com
-  orcid: 0000-0001-8713-9213
-  google-scholar: ETJoidYAAAAJ
+  email: stefanola@ru.is
+  orcid: 0000-0002-3549-8705
+  google-scholar: F0xHwH8AAAAJ
   github: stefanolafsson
-  twitter: stefanolafsson
-  youtube: stefanolafsson
+  linkedin: stefanolafs
 
 ### jekyll settings
 
