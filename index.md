@@ -1,9 +1,9 @@
 ---
 ---
 
-# stefanolafsson's Website
+# HUMI Lab
 
-An engaging 1-3 sentence description of your lab.
+Welcome to the Human-Centered Machine Intelligence (HUMI) lab web page. We conduct research at the intersection of human-computer interaction and machine intelligence. 
 
 {% include section.html %}
 
