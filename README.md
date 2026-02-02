@@ -5,6 +5,6 @@
 
   # stefanolafsson's Website
 
-  Visit **[humi-lab.is](http://humi-lab.is)** 🚀
+  Visit **[humi-lab.is](https://humi-lab.is)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
