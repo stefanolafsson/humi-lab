@@ -100,22 +100,28 @@
                 urlEncodedData.append('subject', formData.subject);
                 urlEncodedData.append('message', formData.message);
                 
-                // Send data to Google Apps Script using form-encoded data
+                // Send to the Apps Script web app and read the JSON response.
+                // This stays a "simple" CORS request (form-encoded body, no custom
+                // headers) so there is no preflight; the script returns
+                // Access-Control-Allow-Origin: *, so we can read the real result.
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Required for Google Apps Script
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
                     body: urlEncodedData.toString()
                 });
-                
-                // With no-cors mode, we can't read the response, so show success optimistically
-                // The form will still submit successfully
+
+                const result = await response.json();
+                if (!response.ok || !result.success) {
+                    throw new Error(result.error || 'The server reported a failure.');
+                }
+
+                // Genuine success — confirmed by the server
                 messageDiv.className = 'mb-6 p-4 rounded-lg bg-green-100 text-green-800 border border-green-300';
                 messageDiv.textContent = 'Thank you! Your message has been sent successfully.';
                 messageDiv.classList.remove('hidden');
-                
+
                 // Reset form
                 form.reset();
                 
