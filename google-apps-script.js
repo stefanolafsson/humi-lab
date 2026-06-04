@@ -44,11 +44,11 @@ function doPost(e) {
       message: e.parameter.message || ''
     };
     
-    // Check if Sheet ID is set
-    if (SHEET_ID === 'SHEET_ID') {
-      throw new Error('Please set your SHEET_ID in the script');
+    // Make sure the Sheet ID has actually been set (not left as a placeholder)
+    if (!SHEET_ID || SHEET_ID === 'YOUR_SHEET_ID') {
+      throw new Error('Please set SHEET_ID to your Google Sheet ID');
     }
-    
+
     // Get the active spreadsheet
     const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
     const sheet = spreadsheet.getActiveSheet();
