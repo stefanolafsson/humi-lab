@@ -23,6 +23,24 @@ const SHEET_ID = '1cueDp3o6VDrohZjJ9WRaQkf54ArKCKUKx045wV3DjAc';
 // Replace with your email address
 const RECIPIENT_EMAIL = 'stefanola@ru.is';
 
+// One-time setup helper. Run this function ONCE in the Apps Script editor
+// (select "runSetup" in the toolbar and click Run). It forces the Google
+// authorization prompt for Sheets + Gmail and verifies the whole pipeline by
+// writing a test row and sending a test email. Delete the test row afterwards.
+function runSetup() {
+  const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['Timestamp', 'Name', 'Email', 'Subject', 'Message']);
+  }
+  sheet.appendRow([new Date(), 'Setup Test', 'setup@example.com', 'Setup', 'Authorization + pipeline test']);
+  MailApp.sendEmail({
+    to: RECIPIENT_EMAIL,
+    subject: 'Contact form setup test',
+    body: 'If you can read this, the script can write to the sheet and send email.'
+  });
+  Logger.log('runSetup complete: test row written and email sent.');
+}
+
 // Handle GET requests (for testing/deployment verification)
 function doGet(e) {
   return ContentService
